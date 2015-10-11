@@ -50,8 +50,8 @@ public class Main {
         while (container.size() > 1){
             if (checkIsAllComplete()){
                 if (isAllBitsIdentic()){
-                    System.out.println(container.get(0).result);
-                    break;
+                    System.out.println(toOneBit(container.get(0).result));
+                    System.exit(0);
                 }
                 levels = (int)(Math.sqrt(container.size())/2);
                 baseQuantity = (1 + 2 * (levels*2 - 1));
@@ -114,11 +114,11 @@ public class Main {
     private static boolean isAllBitsIdentic(){
         int result = container.get(0).result;
         int count = 0;
-        for(int i = 1; i <= container.size();i++){
+        for(int i = 1; i < container.size();i++){
             if (result == container.get(i).result) count++;
             else break;
         }
-        return (count == container.size())?true:false;
+        return (++count == container.size())?true:false;
     }
 
     private static byte toOneBit(int result){
